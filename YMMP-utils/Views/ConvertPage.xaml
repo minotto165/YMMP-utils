@@ -1,0 +1,58 @@
+﻿<Page x:Class="YMMP_utils.Views.ConvertPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:YMMP_utils.Views"
+      mc:Ignorable="d" 
+      
+      xmlns:vm="clr-namespace:YMMP_utils.ViewModels"
+      
+      xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+      xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"       
+      
+      xmlns:lex="http://wpflocalizeextension.codeplex.com"
+      lex:ResxLocalizationProvider.DefaultAssembly="YMMP-utils"
+      lex:ResxLocalizationProvider.DefaultDictionary="Resources"
+      
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ConvertPage">
+
+    <Page.DataContext>
+        <vm:HomePageViewModel/>
+    </Page.DataContext>
+
+    <Grid Margin="24,24,24,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- ヘッダー部分（スクロールしない） -->
+        <ikw:SimpleStackPanel Grid.Row="0">
+            <TextBlock FontSize="24" FontWeight="bold" Text="{lex:Loc Key=home_header_title}"/>
+            <TextBlock Text="{lex:Loc Key=home_header_desc}"/>
+        </ikw:SimpleStackPanel>
+        <!-- スクロールする部分 -->
+        <ui:ScrollViewerEx Grid.Row="1" Margin="0,16,0,0" Padding="0,0,0,16">
+            <ikw:SimpleStackPanel Spacing="24">
+                <Grid Height="32">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="RPP/MIDI" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                    <TextBox Grid.Column="1" Margin="4,0"/>
+                    <ikw:SimpleStackPanel Grid.Column="2" Spacing="4" Orientation="Horizontal" VerticalAlignment="Stretch">
+                        <Button VerticalAlignment="Stretch" Content="reload"/>
+                        <Button VerticalAlignment="Stretch" Content="browse"/>
+                    </ikw:SimpleStackPanel>
+
+                </Grid>
+                <ListView HorizontalAlignment="Stretch" Height="200">
+                    
+                </ListView>
+            </ikw:SimpleStackPanel>
+        </ui:ScrollViewerEx>
+    </Grid>
+</Page>
